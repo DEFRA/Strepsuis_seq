@@ -107,7 +107,7 @@ def combineData(recNTable, MLSTTable, serotypeTable, virulenceTable, verifyCSV, 
                              'Serotype'] = verified_serotype_df['Serotype']
 
     # read virulence data
-    virulence_df = pd.read_table(virulenceTable, sep='\t', names=list(range(4)), skiprows=1)
+    virulence_df = pd.read_table(virulenceTable, sep='\t', names=list(range(6)), skiprows=1)
     virulence_df.rename({0: 'Sample'}, axis=1, inplace=True)
     virulence_df.fillna('-', inplace=True)
     virulence_df['epf'] = virulence_df[1].str.contains('epf') | (virulence_df[2].str.contains('epf')) | \
