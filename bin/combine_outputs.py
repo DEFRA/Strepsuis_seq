@@ -115,7 +115,12 @@ def combineData(recNTable, MLSTTable, serotypeTable, virulenceTable, verifyCSV, 
         (virulence_df[3].str.contains('mrp'))
     virulence_df['sly'] = (virulence_df[1].str.contains('sly')) | (virulence_df[2].str.contains('sly')) | \
         (virulence_df[3].str.contains('sly'))
-    virulence_df = virulence_df[['Sample', 'epf', 'mrp', 'sly']]
+    virulence_df['virA'] = (virulence_df[1].str.contains('virA')) | (virulence_df[2].str.contains('virA')) | \
+        (virulence_df[3].str.contains('virA')) | (virulence_df[4].str.contains('virA'))
+    virulence_df['GI3'] = (virulence_df[1].str.contains('GI3')) | (virulence_df[2].str.contains('GI3')) | \
+        (virulence_df[3].str.contains('GI3')) | (virulence_df[4].str.contains('GI3')) | \
+        (virulence_df[5].str.contains('GI3'))
+    virulence_df = virulence_df[['Sample', 'epf', 'mrp', 'sly', 'virA', 'GI3']]
     virulence_df = virulence_df.astype(str)
     virulence_df.replace('False', '-', inplace=True)
 
