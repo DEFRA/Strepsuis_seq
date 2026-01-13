@@ -110,13 +110,18 @@ def combineData(recNTable, MLSTTable, serotypeTable, virulenceTable, verifyCSV, 
     virulence_df = pd.read_table(virulenceTable, sep='\t', names=list(range(4)), skiprows=1)
     virulence_df.rename({0: 'Sample'}, axis=1, inplace=True)
     virulence_df.fillna('-', inplace=True)
-    virulence_df['epf'] = virulence_df[1].str.contains('epf')
+    virulence_df['epf'] = virulence_df[1].str.contains('epf') | (virulence_df[2].str.contains('epf')) | \
+        (virulence_df[3].str.contains('epf')) | (virulence_df[4].str.contains('epf')) | \
+        (virulence_df[5].str.contains('epf'))
     virulence_df['mrp'] = (virulence_df[1].str.contains('mrp')) | (virulence_df[2].str.contains('mrp')) | \
-        (virulence_df[3].str.contains('mrp'))
+        (virulence_df[3].str.contains('mrp')) | (virulence_df[4].str.contains('mrp')) | \
+        (virulence_df[5].str.contains('mrp'))
     virulence_df['sly'] = (virulence_df[1].str.contains('sly')) | (virulence_df[2].str.contains('sly')) | \
-        (virulence_df[3].str.contains('sly'))
+        (virulence_df[3].str.contains('sly')) | (virulence_df[4].str.contains('sly')) | \
+        (virulence_df[5].str.contains('sly'))
     virulence_df['virA'] = (virulence_df[1].str.contains('virA')) | (virulence_df[2].str.contains('virA')) | \
-        (virulence_df[3].str.contains('virA')) | (virulence_df[4].str.contains('virA'))
+        (virulence_df[3].str.contains('virA')) | (virulence_df[4].str.contains('virA')) \
+        (virulence_df[5].str.contains('virA'))
     virulence_df['GI3'] = (virulence_df[1].str.contains('GI3')) | (virulence_df[2].str.contains('GI3')) | \
         (virulence_df[3].str.contains('GI3')) | (virulence_df[4].str.contains('GI3')) | \
         (virulence_df[5].str.contains('GI3'))
