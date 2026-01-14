@@ -58,8 +58,8 @@ _Streptococcus suis_ MLST database last updated 01-Oct-25 from: [_Streptococcus 
 
 recN, virulence and serotype databases are obtained from: [_Streptococcus suis_ serotyping pipeline](https://github.com/streplab/SsuisSerotyping_pipeline)
 
-Additional virulence genes are:
-virA: [SSU1589 from _Streptococcus suis_ P1/7](https://www.ncbi.nlm.nih.gov/nuccore/AM946016.1?from=1597720&to=1598925)
+Additional virulence genes are:  
+virA: [SSU1589 from _Streptococcus suis_ P1/7](https://www.ncbi.nlm.nih.gov/nuccore/AM946016.1?from=1597720&to=1598925)  
 GI3: [Genomic Island 3 from _Streptococcus suis_ P1/7](https://www.ncbi.nlm.nih.gov/nuccore/AM946016.1?from=195886&to=197085)
 
 Kraken2 uses the [minikraken2 v1 database](https://genome-idx.s3.amazonaws.com/kraken/minikraken2_v1_8GB_201904.tgz)
