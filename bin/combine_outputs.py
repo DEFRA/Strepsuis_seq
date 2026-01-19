@@ -190,13 +190,14 @@ def combineData(recNTable, MLSTTable, serotypeTable, virulenceTable, verifyCSV, 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('recNTable', help='............')
-    parser.add_argument('MLSTTable', help='............')
-    parser.add_argument('serotypeTable', help='...............')
-    parser.add_argument('virulenceTable', help='................')
-    parser.add_argument('verifyCSV', help='................')
-    parser.add_argument('krakenID', help='..............')
-    parser.add_argument('statsCSV', help='..............')
+    parser.add_argument('recNTable', help='.............')
+    parser.add_argument('MLSTTable', help='.............')
+    parser.add_argument('serotypeTable', help='.............')
+    parser.add_argument('virulenceTable', help='.............')
+    parser.add_argument('proteaseTable', help='.............')
+    parser.add_argument('verifyCSV', help='.............')
+    parser.add_argument('krakenID', help='.............')
+    parser.add_argument('statsCSV', help='.............')
     parser.add_argument('dataDir', help='.............')
     # parser.add_argument('commitId', help='Nextflow capture of git commit')
 
