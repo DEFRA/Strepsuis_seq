@@ -12,7 +12,7 @@ import re
 from datetime import date
 
 
-def combineData(recNTable, MLSTTable, serotypeTable, virulenceTable, verifyCSV, krakenID, statsCSV, dataDir):
+def combineData(recNTable, MLSTTable, serotypeTable, virulenceTable, proteaseTable, verifyCSV, krakenID, statsCSV, dataDir):
 
     # Get info for logging
     date_out = date.today().strftime('%d%b%y')
@@ -28,6 +28,13 @@ def combineData(recNTable, MLSTTable, serotypeTable, virulenceTable, verifyCSV, 
     MLST_df = pd.read_table(MLSTTable, sep='\t')
     MLST_df[['Sample', 'ST', 'aroA', 'cpn60', 'dpr', 'gki', 'mutS', 'recA', 'thrA']] = \
         MLST_df[['Sample', 'ST', 'aroA', 'cpn60', 'dpr', 'gki', 'mutS', 'recA', 'thrA']].astype(object)
+    
+    # read IgM protease data
+    protease_df = pd.read_table(proteaseTable, sep='\t')
+    protease_df['Sample'] = protease_df['Sample'].astype(object)
+    protease_df.rename({'ST': 'IgMtype'}, axis=1, inplace=True)
+    protease_df['IgMtype'] = protease_df['IgMtype'].astype(str)
+    protease_df['IgMtype'] = protease_df['IgMtype'].str.replace(r'\D', '', regex=True)
 
     # read serotype data
     serotype_df = pd.read_table(serotypeTable, sep='\t')
