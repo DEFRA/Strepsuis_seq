@@ -7,6 +7,7 @@ process COMBINE_OUTPUTS {
         file("MLST.tsv")
         file("serotype.tsv")
         file("virulence.tsv")
+        file("protease.tsv")
         file("verify.csv")
         file("krakenID.csv")
         file("readstats.csv")
@@ -16,6 +17,6 @@ process COMBINE_OUTPUTS {
 
     script:
     """
-        combine_outputs.py recN.tsv MLST.tsv serotype.tsv virulence.tsv verify.csv krakenID.csv readstats.csv ${params.dataDir}
+        combine_outputs.py recN.tsv MLST.tsv serotype.tsv virulence.tsv protease.tsv verify.csv krakenID.csv readstats.csv ${params.dataDir}
     """
 }
