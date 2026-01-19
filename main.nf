@@ -9,6 +9,7 @@ include { SRST2_RECN } from './modules/srst2_recN'
 include { SRST2_MLST } from './modules/srst2_mlst'
 include { SRST2_SEROTYPE } from './modules/srst2_serotype'
 include { SRST2_VIRULENCE } from './modules/srst2_virulence'
+include { SRST2_IGM } from './modules/srst2_IgM'
 include { VERIFY_SEROTYPE } from './modules/verifySerotype'
 include { COMBINE_OUTPUTS } from './modules/combineoutputs'
 
@@ -31,6 +32,7 @@ workflow {
     SRST2_MLST(CHECKINPUT.out.fastqreads)
     SRST2_SEROTYPE(CHECKINPUT.out.fastqreads)
     SRST2_VIRULENCE(CHECKINPUT.out.fastqreads)
+    SRST2_IGM(CHECKINPUT.out.fastqreads)
     SRST2_SEROTYPE.out.srst2_sero
         .join( readPairs )
         .set { verify_reads }
@@ -51,6 +53,10 @@ workflow {
         .map { it -> it[1] }
         .collectFile( name: "virulence_table.tsv", sort: true, keepHeader: true, skip: 1, storeDir: "${params.outdir}/Results_${params.dataDir}_${params.today}/virulence" )
         .set { virulence }
+    SRST2_IGM.out.protease_results
+        .map { it -> it[1] }
+        .collectFile( name: "protease_table.tsv", sort: true, keepHeader: true, skip: 1, storeDir: "${params.outdir}/Results_${params.dataDir}_${params.today}/protease")
+        .set { protease }
     VERIFY_SEROTYPE.out
         .map { it -> it[1] }
         .collectFile( name: "verification.csv", sort: true, keepHeader: true, skip: 1, storeDir: "${params.outdir}/Results_${params.dataDir}_${params.today}/serotype" )
@@ -63,5 +69,5 @@ workflow {
         .map { it -> it[1] }
         .collectFile( name: "readstats.csv", sort: true, keepHeader: true, skip: 1, storeDir: "${params.outdir}/Results_${params.dataDir}_${params.today}" )
         .set { readstats }
-    COMBINE_OUTPUTS(recN, mlst, serotype, virulence, verify, kraken, readstats)
+    COMBINE_OUTPUTS(recN, mlst, serotype, virulence, protease, verify, kraken, readstats)
 }
