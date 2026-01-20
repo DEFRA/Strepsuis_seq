@@ -34,7 +34,7 @@ def combineData(recNTable, MLSTTable, serotypeTable, virulenceTable, proteaseTab
     protease_df['Sample'] = protease_df['Sample'].astype(object)
     protease_df.rename({'ST': 'IgMtype'}, axis=1, inplace=True)
     protease_df['IgMtype'] = protease_df['IgMtype'].astype(str)
-    protease_df['IgMtype'] = protease_df['IgMtype'].str.replace(r'\D', '', regex=True)
+    protease_df['IgMtype'] = protease_df['IgMtype'].str.replace(r'[^A-C]', '', regex=True)
 
     # read serotype data
     serotype_df = pd.read_table(serotypeTable, sep='\t')
