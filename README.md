@@ -8,7 +8,7 @@ This is the repo for APHA's Nextflow implementation of the [_Streptococcus suis_
 Calculations of best match are in the [SRST2 publication](
 https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-014-0090-6)
 
-srst2 processes are run in parallel and all data are collated onto a final output file.
+srst2 processes are run in parallel and all data are collated into a final output file.
 
 ```mermaid
 flowchart TB
@@ -22,6 +22,7 @@ flowchart TB
     v7([SRST2_MLST])
     v8([SRST2_SEROTYPE])
     v9([SRST2_VIRULENCE])
+    v10([SRST2_IGM])
     v11([VERIFY_SEROTYPE])
     v22([COMBINE_OUTPUTS])
     v0 --> v2
@@ -30,7 +31,8 @@ flowchart TB
     v2 --> v7
     v2 --> v8
     v2 --> v9
-    v0 --> v11
+    v2 --> v10
+    v2 --> v11
     v8 --> v11
     v2 --> v22
     v5 --> v22
@@ -38,6 +40,7 @@ flowchart TB
     v7 --> v22
     v8 --> v22
     v9 --> v22
+    v10 --> v22
     v11 --> v22
   end
 
@@ -61,6 +64,8 @@ recN, virulence and serotype databases are obtained from: [_Streptococcus suis_ 
 Additional virulence genes are:  
 virA: [SSU1589 from _Streptococcus suis_ P1/7](https://www.ncbi.nlm.nih.gov/nuccore/AM946016.1?from=1597720&to=1598925)  
 GI3: [Genomic Island 3 from _Streptococcus suis_ P1/7](https://www.ncbi.nlm.nih.gov/nuccore/AM946016.1?from=195886&to=197085)
+
+The IgM protease gene is a putative virulence factor and alleles present in an isolate can be used to predict the cross-protection that can be expected from a group A based IgM protease vaccine [Jacobs _et. al._, 2024](https://link.springer.com/article/10.1186/s40813-024-00398-2).  Following clusetering of available alleles representative sequences (IgM-A1, IgM-A2, IgM-C1, IgM-C2, IgM-C3, IgM-B1, IgM-B2, and IgM-B3) have been designated.
 
 Kraken2 uses the [minikraken2 v1 database](https://genome-idx.s3.amazonaws.com/kraken/minikraken2_v1_8GB_201904.tgz)
 
