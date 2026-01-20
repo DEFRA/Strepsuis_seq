@@ -34,7 +34,7 @@ workflow {
     SRST2_VIRULENCE(CHECKINPUT.out.fastqreads)
     SRST2_IGM(CHECKINPUT.out.fastqreads)
     SRST2_SEROTYPE.out.srst2_sero
-        .join( readPairs )
+        .join( CHECKINPUT.out.fastqreads )
         .set { verify_reads }
     VERIFY_SEROTYPE(verify_reads)
     SRST2_RECN.out.recN_genes
