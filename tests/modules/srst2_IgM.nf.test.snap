@@ -1,0 +1,25 @@
+{
+    "Should assign correct IgM type": {
+        "content": [
+            {
+                "0": [
+                    [
+                        "test",
+                        "IgMprotease_test__mlst__IgMprotease__results.txt:md5,b23f57c02bd839b745cb16b38ebf3314"
+                    ]
+                ],
+                "protease_results": [
+                    [
+                        "test",
+                        "IgMprotease_test__mlst__IgMprotease__results.txt:md5,b23f57c02bd839b745cb16b38ebf3314"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.04.8"
+        },
+        "timestamp": "2026-01-20T11:50:14.069288385"
+    }
+}
