@@ -65,7 +65,7 @@ Additional virulence genes are:
 virA: [SSU1589 from _Streptococcus suis_ P1/7](https://www.ncbi.nlm.nih.gov/nuccore/AM946016.1?from=1597720&to=1598925)  
 GI3: [Genomic Island 3 from _Streptococcus suis_ P1/7](https://www.ncbi.nlm.nih.gov/nuccore/AM946016.1?from=195886&to=197085)
 
-The IgM protease gene is a putative virulence factor and alleles present in an isolate can be used to predict the cross-protection that can be expected from a group A based IgM protease vaccine [Jacobs _et. al._, 2024](https://link.springer.com/article/10.1186/s40813-024-00398-2).  Following clusetering of available alleles representative sequences (IgM-A1, IgM-A2, IgM-C1, IgM-C2, IgM-C3, IgM-B1, IgM-B2, and IgM-B3) have been designated.
+The IgM protease gene is a putative virulence factor and alleles present in an isolate can be used to predict the cross-protection that can be expected from a group A based IgM protease vaccine [Jacobs _et. al._, 2024](https://link.springer.com/article/10.1186/s40813-024-00398-2).  Following clustering of available alleles representative sequences (IgM-A1, IgM-A2, IgM-C1, IgM-C2, IgM-C3, IgM-B1, IgM-B2, and IgM-B3) have been designated.
 
 Kraken2 uses the [minikraken2 v1 database](https://genome-idx.s3.amazonaws.com/kraken/minikraken2_v1_8GB_201904.tgz)
 
