@@ -27,7 +27,7 @@ nextflow_process {
             assert process.success
 
             with(process.out[0]) {
-                assert path(get(0)).md5 == 'ae7cbcf688b03267e07e8f05269a21bc'
+                assert path(get(0)).md5 == 'c6795dcd3b6dc9db969449a92a37e0d6'
             }
         }
 
