@@ -4,7 +4,7 @@ nextflow_process {
     script "modules/combineoutputs.nf"
     process "COMBINE_OUTPUTS"
 
-    test("Should run without failures") {
+    test("Should combine all output files into a single csv") {
 
         when {
             params {
@@ -16,9 +16,10 @@ nextflow_process {
                 input[1] = file("${projectDir}/tests/data/mlst_table.tsv")
                 input[2] = file("${projectDir}/tests/data/serotype_table.tsv")
                 input[3] = file("${projectDir}/tests/data/virulence_table.tsv")
-                input[4] = file("${projectDir}/tests/data/verification.csv")
-                input[5] = file("${projectDir}/tests/data/krakenID.csv")
-                input[6] = file("${projectDir}/tests/data/test_stats.csv")
+                input[4] = file("${projectDir}/tests/data/protease_table.tsv")
+                input[5] = file("${projectDir}/tests/data/verification.csv")
+                input[6] = file("${projectDir}/tests/data/krakenID.csv")
+                input[7] = file("${projectDir}/tests/data/test_stats.csv")
                 """
             }
         }
@@ -27,7 +28,7 @@ nextflow_process {
             assert process.success
 
             with(process.out[0]) {
-                assert path(get(0)).md5 == 'c6795dcd3b6dc9db969449a92a37e0d6'
+                assert path(get(0)).md5 == '344dd8ab1585876ec7deec2b1e15de1c'
             }
         }
 

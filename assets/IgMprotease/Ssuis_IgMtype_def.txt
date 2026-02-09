@@ -1,0 +1,9 @@
+ST	IgM
+IgM-A1	A1
+IgM-A2	A2
+IgM-B1	B1
+IgM-B2	B2
+IgM-B3	B3
+IgM-C1	C1
+IgM-C2	C2
+IgM-C3	C3
