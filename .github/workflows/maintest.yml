@@ -7,37 +7,37 @@ on:
     paths:
        - '**'
        - '!Dockerfile'
-env:
-  NODE_EXTRA_CA_CERTS: "/etc/ssl/certs/ca-certificates.crt"
-  SSL_CERT_DIR: "/etc/ssl/certs"
 
 jobs:
   CI_testing:
-    runs-on: self-hosted
+    runs-on: ubuntu:latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7.0.0
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@v5.5.0
         with:
           java-version: '17'
           distribution: 'temurin'
 
       - name: Setup Nextflow
-        uses: nf-core/setup-nextflow@6c2e22b4d901f0c42ca66c5069f8026df026d165
+        uses: nf-core/setup-nextflow@v3.0.0
         with:
           version: '25.04.8'
 
       - name: Docker cleanup
         run: sudo docker system prune -af
  
-      - name: ECR Login
+      - name: Docker Login
+        uses: docker/login-action@v4.4.0
+        with: 
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Docker Pull
         run: |
-          sudo aws ecr get-login-password --region eu-west-1 | sudo docker login --username AWS --password-stdin ${{ secrets.CSU_ACCOUNT_NUMBER }}.dkr.ecr.eu-west-1.amazonaws.com
-      - name: ECR Pull
-        run: |
-          sudo docker pull ${{ secrets.CSU_ACCOUNT_NUMBER }}.dkr.ecr.eu-west-1.amazonaws.com/gitrun-csu-1016:latest
+          docker pull defradigital/strepsuis-seq:latest
 
       - name: Set secrets
         run: |
