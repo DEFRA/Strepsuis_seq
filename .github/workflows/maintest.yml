@@ -38,12 +38,11 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Docker Pull
-        run: |
+        run:
           docker pull defradigital/strepsuis-seq:latest
 
       - name: Set secrets
-        run: |
-          nextflow secrets set ECR_ACCOUNT ${{ secrets.CSU_ACCOUNT_NUMBER }}
+        run:
           nextflow secrets set BRANCH "latest"
 
       - name: Install nf-test
@@ -52,5 +51,6 @@ jobs:
           sudo mv nf-test /usr/local/bin/
 
       - name: Run Tests
-        run: nf-test test --ci
-        
+        run: 
+          nf-test test --ci
+
