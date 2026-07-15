@@ -9,6 +9,8 @@ on:
 
 jobs:
   Build:
+    permissions:
+      contents: read
     runs-on: ubuntu:latest
     steps:
       - name: Checkout
@@ -29,6 +31,8 @@ jobs:
           tags: defradigital/strepsuis-seq:latest      
 
   CI_testing:
+    permissions:
+      contents: read
     runs-on: ubuntu:latest
     steps:
       - name: Checkout code
