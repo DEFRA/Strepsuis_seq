@@ -28,9 +28,6 @@ jobs:
         with:
           version: '25.04.8'
 
-      - name: Docker cleanup
-        run: sudo docker system prune -af
- 
       - name: Docker Login
         uses: docker/login-action@v4.4.0
         with: 
